@@ -1,7 +1,5 @@
 {
-  "buildCommand": "cd leadgen && npm run build",
-  "devCommand": "cd leadgen && npm run dev",
-  "installCommand": "cd leadgen && npm ci",
-  "framework": "nextjs",
-  "outputDirectory": "leadgen/.next"
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "framework": "nextjs"
 }

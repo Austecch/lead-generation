@@ -1,0 +1,10 @@
+emily-experience
+.git
+.gitignore
+README.md
+CLAUDE.md
+LEADGEN-README.md
+node_modules
+**/.env.local
+**/.env
+**/.DS_Store
