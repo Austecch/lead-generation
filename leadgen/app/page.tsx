@@ -2,44 +2,45 @@ import Link from 'next/link'
 
 export default function RootPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      <div className="max-w-4xl mx-auto px-4 py-20 text-center">
-        <h1 className="text-5xl font-bold text-white mb-6">
+    <div style={{ minHeight: '100vh', background: 'linear-gradient(to bottom right, #0f172a, #581c87, #0f172a)', color: 'white', padding: '80px 20px' }}>
+      <div style={{ maxWidth: '56rem', margin: '0 auto', textAlign: 'center' }}>
+        <h1 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '24px' }}>
           Emily Experience
-          <span className="block bg-gradient-to-r from-amber-300 via-amber-200 to-amber-300 bg-clip-text text-transparent">
-            Lead Generation Platform
-          </span>
         </h1>
         
-        <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
+        <h2 style={{ fontSize: '2rem', background: 'linear-gradient(to right, #fbbf24, #fde047, #fbbf24)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', marginBottom: '24px' }}>
+          Lead Generation Platform
+        </h2>
+        
+        <p style={{ fontSize: '1.25rem', color: '#cbd5e1', marginBottom: '48px', maxWidth: '42rem', margin: '0 auto 48px' }}>
           Complete lead capture, scoring, email automation, and consultation booking system
         </p>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '24px', marginBottom: '48px' }}>
           <Link
             href="/leadgen/checklist"
-            className="px-8 py-4 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 font-bold rounded-lg hover:from-amber-300 hover:to-amber-400 transition-all duration-300 shadow-lg"
+            style={{ padding: '16px 32px', background: 'linear-gradient(to right, #fbbf24, #f59e0b)', color: '#1e293b', fontWeight: 'bold', borderRadius: '8px', textDecoration: 'none', display: 'inline-block' }}
           >
             Event Planning Checklist →
           </Link>
           
           <Link
             href="/leadgen/calculator"
-            className="px-8 py-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white font-bold rounded-lg hover:from-purple-400 hover:to-purple-500 transition-all duration-300 shadow-lg"
+            style={{ padding: '16px 32px', background: 'linear-gradient(to right, #a855f7, #9333ea)', color: 'white', fontWeight: 'bold', borderRadius: '8px', textDecoration: 'none', display: 'inline-block' }}
           >
             Budget Calculator →
           </Link>
           
           <Link
             href="/leadgen/guide"
-            className="px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold rounded-lg hover:from-blue-400 hover:to-blue-500 transition-all duration-300 shadow-lg"
+            style={{ padding: '16px 32px', background: 'linear-gradient(to right, #3b82f6, #1d4ed8)', color: 'white', fontWeight: 'bold', borderRadius: '8px', textDecoration: 'none', display: 'inline-block' }}
           >
             Vendor Selection Guide →
           </Link>
           
           <Link
             href="/leadgen/consultation"
-            className="px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-lg hover:from-green-400 hover:to-green-500 transition-all duration-300 shadow-lg"
+            style={{ padding: '16px 32px', background: 'linear-gradient(to right, #10b981, #059669)', color: 'white', fontWeight: 'bold', borderRadius: '8px', textDecoration: 'none', display: 'inline-block' }}
           >
             Free Consultation →
           </Link>
@@ -47,12 +48,12 @@ export default function RootPage() {
 
         <Link
           href="/leadgen/dashboard"
-          className="inline-flex px-6 py-3 bg-slate-700 text-slate-200 font-semibold rounded-lg hover:bg-slate-600 transition-all"
+          style={{ padding: '12px 24px', background: '#475569', color: '#f1f5f9', fontWeight: '600', borderRadius: '8px', textDecoration: 'none', display: 'inline-block' }}
         >
           Dashboard (Admin)
         </Link>
 
-        <p className="text-slate-400 text-sm mt-12">
+        <p style={{ color: '#94a3b8', fontSize: '0.875rem', marginTop: '48px' }}>
           ✅ API endpoints • ✅ Email automation • ✅ Lead scoring • ✅ Analytics
         </p>
       </div>
