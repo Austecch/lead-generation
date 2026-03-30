@@ -1,19 +1,6 @@
 {
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
-  "installCommand": "npm install",
-  "framework": "nextjs",
-  "outputDirectory": ".next",
-  "env": [
-    {
-      "key": "NEXT_PUBLIC_API_BASE_URL",
-      "value": "https://api.emilyexperience.com",
-      "target": ["production"]
-    },
-    {
-      "key": "NEXT_PUBLIC_API_BASE_URL",
-      "value": "http://localhost:3000",
-      "target": ["development"]
-    }
-  ]
+  "installCommand": "npm ci",
+  "framework": "nextjs"
 }

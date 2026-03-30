@@ -151,7 +151,7 @@ function AppointmentsContent() {
             <div style={{ fontSize:'0.78rem', color:'#8B92A5', background:'#0A0C10', borderRadius:6, padding:'0.625rem', border:'1px solid #1E2330', marginBottom:'1.25rem', lineHeight:1.6 }}>{selected.notes || '—'}</div>
             <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'0.5rem' }}>
               {(['scheduled','completed','noshow','cancelled'] as const).map(s => (
-                <button key={s} onClick={() => updateStatus(selected.id, s)} style={{ padding:'0.4rem', borderRadius:6, border:'none', cursor:'pointer', fontSize:'0.72rem', fontWeight:500, background: selected.status === s ? `${statusColor[s]}22` : '#1E2330', color: selected.status === s ? statusColor[s] : '#8B92A5', border: selected.status === s ? `1px solid ${statusColor[s]}44` : '1px solid transparent', transition:'all 0.2s' }}>
+                <button key={s} onClick={() => updateStatus(selected.id, s)} style={{ padding:'0.4rem', borderRadius:6, cursor:'pointer', fontSize:'0.72rem', fontWeight:500, background: selected.status === s ? `${statusColor[s]}22` : '#1E2330', color: selected.status === s ? statusColor[s] : '#8B92A5', border: selected.status === s ? `1px solid ${statusColor[s]}44` : '1px solid transparent', transition:'all 0.2s' }}>
                   {s === 'noshow' ? 'No Show' : s.charAt(0).toUpperCase()+s.slice(1)}
                 </button>
               ))}

@@ -29,7 +29,7 @@ function CampaignsContent() {
 
   // AI Composer state
   const [composeForm, setComposeForm] = useState({
-    businessName: '', contactName: '', location: '', niche: '', recentActivity: '', channel: 'Email', tone: 'Professional'
+    businessName: '', contactName: '', location: '', niche: '', recentActivity: '', channel: 'Email', tone: 'Professional', sequence: 3
   })
   const [generating, setGenerating] = useState(false)
   const [generatedMsgs, setGeneratedMsgs] = useState<Message[]>([])

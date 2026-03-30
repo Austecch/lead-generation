@@ -222,8 +222,7 @@ export default function CalculatorPage() {
               { step: "3", title: "Download Your Guide", desc: "Get a detailed breakdown with money-saving tips" },
             ].map((item) => (
               <div key={item.step} className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-emily-gold to-emily-gold-dark flex items-center justify-center"
-003e
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-emily-gold to-emily-gold-dark flex items-center justify-center">
                   <span className="text-2xl font-bold text-[#0F0A1A]">{item.step}</span>
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>

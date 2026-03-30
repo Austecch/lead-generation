@@ -1,3 +1,4 @@
+'use client'
 import Navbar from "@/components/ui/Navbar";
 import LeadForm from "@/components/ui/LeadForm";
 import Benefits from "@/components/ui/Benefits";
