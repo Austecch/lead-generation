@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - Emily Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600,700&family=Inter:wght@300;400;500,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Notification-specific styles */
+        .notification-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(147, 51, 234, 0.1);
+            background: var(--bg-secondary);
+            transition: all var(--transition-normal);
+            cursor: pointer;
+        }
+
+        .notification-item:hover {
+            border-color: rgba(147, 51, 234, 0.3);
+            transform: translateX(4px);
+        }
+
+        .notification-item.unread {
+            background: rgba(147, 51, 234, 0.1);
+            border-left: 3px solid var(--gold);
+        }
+
+        .notification-item.high-priority {
+            border-color: rgba(239, 68, 68, 0.3);
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        .notification-item.urgent-priority {
+            border-color: rgba(239, 68, 68, 0.5);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .notification-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .notification-icon.booking { background: rgba(16, 185, 129, 0.15); }
+        .notification-icon.payment { background: rgba(212, 175, 55, 0.15); }
+        .notification-icon.system { background: rgba(147, 51, 234, 0.15); }
+        .notification-icon.message { background: rgba(59, 130, 246, 0.15); }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.25rem;
+        }
+
+        .notification-title {
+            font-weight: 600;
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .notification-time {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .notification-message {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0 0 0.5rem;
+            line-height: 1.5;
+        }
+
+        .notification-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .notification-actions button {
+            padding: 0.25rem 0.75rem;
+            font-size: 0.8rem;
+        }
+
+        .notification-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 20px;
+            height: 20px;
+            background: var(--gold);
+            color: var(--bg-primary);
+            border-radius: var(--radius-full);
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .priority-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-left: 0.5rem;
+        }
+
+        .priority-low { background: var(--text-muted); }
+        .priority-normal { background: var(--primary-light); }
+        .priority-high { background: #F59E0B; }
+        .priority-urgent { background: #EF4444; }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            background: var(--bg-card);
+            border: 1px solid rgba(147, 51, 234, 0.2);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .filter-tab:hover,
+        .filter-tab.active {
+            background: var(--gradient-primary);
+            border-color: transparent;
+            color: white;
+        }
+
+        .notification-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 400px;
+            background: var(--bg-card);
+            border: 1px solid rgba(147, 51, 234, 0.2);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+        }
+
+        .notification-dropdown.show {
+            display: block;
+        }
+
+        .notification-dropdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(147, 51, 234, 0.1);
+        }
+
+        .notification-dropdown-body {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .notification-dropdown-footer {
+            padding: 1rem;
+            border-top: 1px solid rgba(147, 51, 234, 0.1);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">✨</span>
+                <span class="logo-text">Emily<span class="highlight">Experience</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="event-planning.html">Plan Event</a></li>
+                <li><a href="vendors.html">Vendors</a></li>
+                <li><a href="gifts.html">Gifts</a></li>
+                <li><a href="rentals.html">Rentals</a></li>
+                <li><a href="tickets.html">Tickets</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="dashboard.html" class="btn btn-ghost">Dashboard</a>
+                <div style="position: relative;">
+                    <button class="btn btn-ghost" id="notification-toggle" style="position: relative;">
+                        <span>🔔</span>
+                        <span id="notification-count" class="notification-badge" style="position: absolute; top: -5px; right: -5px;">3</span>
+                    </button>
+                    <!-- Notification Dropdown -->
+                    <div class="notification-dropdown" id="notification-dropdown">
+                        <div class="notification-dropdown-header">
+                            <strong>Notifications</strong>
+                            <a href="#" onclick="markAllAsRead()" style="font-size: 0.85rem;">Mark all read</a>
+                        </div>
+                        <div class="notification-dropdown-body">
+                            <!-- Dropdown items will be loaded here -->
+                        </div>
+                        <div class="notification-dropdown-footer">
+                            <a href="notifications.html">View All Notifications →</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="login.html" class="btn btn-primary">Sign In</a>
+            </div>
+            <button class="mobile-toggle" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="sidebar-link">
+                    <span class="icon">📊</span>
+                    <span>Overview</span>
+                </a>
+                <a href="notifications.html" class="sidebar-link active">
+                    <span class="icon">🔔</span>
+                    <span>Notifications</span>
+                    <span id="sidebar-notification-count" class="notification-badge" style="margin-left: auto;">3</span>
+                </a>
+                <a href="event-planning.html" class="sidebar-link">
+                    <span class="icon">📅</span>
+                    <span>My Events</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">🛒</span>
+                    <span>Bookings</span>
+                </a>
+                <a href="#" class="sidebar-link"
+                    <span class="icon">⚙️</span>
+                    <span>Preferences</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div>
+                        <h1>Notifications 🔔</h1>
+                        <p>Stay updated on your events, bookings, and payments</p>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn btn-ghost" onclick="markAllAsRead()">Mark All Read</button>
+                        <button class="btn btn-primary" onclick="openPreferences()">Preferences</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" onclick="filterNotifications('all')">All</button>
+                <button class="filter-tab" onclick="filterNotifications('unread')">Unread</button>
+                <button class="filter-tab" onclick="filterNotifications('booking')">Bookings</button>
+                <button class="filter-tab" onclick="filterNotifications('payment')">Payments</button>
+                <button class="filter-tab" onclick="filterNotifications('system')">System</button>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid" style="margin-bottom: 2rem;">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">🔔</div>
+                    </div>
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">Total Notifications</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">📬</div>
+                    </div>
+                    <div class="stat-value" style="color: var(--gold);">3</div>
+                    <div class="stat-label">Unread</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">⚠️</div>
+                    </div>
+                    <div class="stat-value" style="color: #EF4444;">1</div>
+                    <div class="stat-label">High Priority</div>
+                </div>
+            </div>
+
+            <!-- Notifications List -->
+            <div class="card">
+                <div class="card-header"
+                    <h3 class="card-title">Recent Notifications</h3>
+                    <select class="form-select" style="width: auto;" onchange="sortNotifications(this.value)"
+
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First></option>
+                        <option value="priority">Priority</option>
+                    </select>
+                </div>
+
+                <div id="notifications-list" style="display: flex; flex-direction: column; gap: 0.75rem;"
+                >
+                    <!-- Notification: Booking Confirmed -->
+                    <div class="notification-item unread" data-id="1" data-type="booking"
+                        <div class="notification-icon booking">✅</div>
+                        <div class="notification-content"
+                            <div class="notification-header"
+                                <h4 class="notification-title"
+                                    >Booking Confirmed</h4>
+                                    <span class="notification-time">2 hours ago</span>
+                                </div>
+                                <p class="notification-message">Golden Lens Photography has confirmed your booking for Sarah's Wedding on March 15th.</p>
+                                <div class="notification-actions"
+                                    <a href="#" class="btn btn-primary" style="padding: 0.4rem 0.75rem; font-size: 0.8rem;">View Booking</a>
+                                    <button class="btn btn-ghost" style="padding: 0.4rem 0.75rem; font-size: 0.8rem;" onclick="markAsRead(1)">Mark as Read</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    <!-- Notification: Payment Received -->
+                    <div class="notification-item unread" data-id="2" data-type="payment"
+                        <div class="notification-icon payment">💰</div>
+                        <div class="notification-content"
+                            <div class="notification-header"
+                                <h4 class="notification-title"
+                                    >Payment Received</h4>
+                                    <span class="notification-time">5 hours ago</span>
+                                </div>
+                                <p class="notification-message">Your payment of $500 has been processed successfully for booking #BK-2847.</p>
+                                <div class="notification-actions"
+                                    <a href="#" class="btn btn-primary" style="padding: 0.4rem 0.75rem; font-size: 0.8rem;">View Receipt</a>
+                                    <button class="btn btn-ghost" style="padding: 0.4rem 0.75rem; font-size: 0.8rem;" onclick="markAsRead(2)">Mark as Read</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    <!-- Notification: High Priority - Urgent -->
+                    <div class="notification-item unread urgent-priority" data-id="3" data-type="system"
+                        <div class="notification-icon system">⚠️</div>
+                        <div class="notification-content"
+                            <div class="notification-header"
+                                <h4 class="notification-title"
+                                    >Action Required: Complete Payment</h4>
+                                    <span class="notification-time">1 day ago</span>
+                                    <span class="priority-indicator priority-urgent" title="Urgent"></span>
+                                </div>
+                                <p class="notification-message">Your booking with Royal Catering requires payment within 24 hours to secure the date.</p>
+                                <div class="notification-actions"
+                                    <a href="#" class="btn btn-primary" style="padding: 0.4rem 0.75rem; font-size: 0.8rem;">Pay Now</a>
+                                    <button class="btn btn-ghost" style="padding: 0.4rem 0.75rem; font-size: 0.8rem;" onclick="markAsRead(3)">Dismiss</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    <!-- Notification: Event Reminder -->
+                    <div class="notification-item read" data-id="4" data-type="system"
+                        <div class="notification-icon system">⏰</div>
+                        <div class="notification-content"
+                            <div class="notification-header"
+                                <h4 class="notification-title"
+                                    >Event Reminder</h4>
+                                    <span class="notification-time">2 days ago</span>
+                                </div>
+                                <p class="notification-message">Sarah's Wedding is in 2 weeks. Complete your checklist and confirm vendor bookings.</p>
+                                <div class="notification-actions"
+                                    <a href="event-planning.html" class="btn btn-ghost" style="padding: 0.4rem 0.75rem; font-size: 0.8rem;">View Event</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    <!-- Notification: Review Request -->
+                    <div class="notification-item read" data-id="5" data-type="system"
+                        <div class="notification-icon message">⭐</div>
+                        <div class="notification-content"
+                            <div class="notification-header"
+                                <h4 class="notification-title"
+                                    >Leave a Review</h4>
+                                    <span class="notification-time">1 week ago</span>
+                                </div>
+                                <p class="notification-message">How was your experience with Bloom & Blossom Florals? Share your feedback!</p>
+                                <div class="notification-actions"
+                                    <a href="#" class="btn btn-primary" style="padding: 0.4rem 0.75rem; font-size: 0.8rem;">Write Review</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Load More -->
+                    <div style="text-align: center; padding: 1rem;"
+                        <button class="btn btn-ghost" onclick="loadMoreNotifications()">Load More</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Preferences Modal -->
+    <div id="preferences-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center;"
+        <div class="card" style="width: 90%; max-width: 600px; max-height: 80vh; overflow-y: auto;"
+            <div class="card-header"
+                <h3 class="card-title">🔔 Notification Preferences</h3>
+                <button onclick="closePreferences()" style="background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;">×</button>
+            </div>
+
+            <div style="padding: 1.5rem;"
+                <h4 style="margin-bottom: 1rem; color: var(--gold);">Email Notifications</h4>
+
+                <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;"
+                    <label class="checkbox-item" style="justify-content: space-between;"
+                        <span>Booking Updates</span>
+                        <input type="checkbox" checked>
+                    </label>
+
+                    <label class="checkbox-item" style="justify-content: space-between;"
+                        <span>Payment Confirmations</span>
+                        <input type="checkbox" checked>
+                    </label>
+
+                    <label class="checkbox-item" style="justify-content: space-between;"
+                        <span>Marketing & Promotions</span>
+                        <input type="checkbox">
+                    </label>
+
+                    <label class="checkbox-item" style="justify-content: space-between;"
+                        <span>System Announcements</span>
+                        <input type="checkbox">
+                    </label>
+                </div>
+
+                <h4 style="margin-bottom: 1rem; color: var(--gold);">Push Notifications</h4>
+
+                <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;"
+                    <label class="checkbox-item" style="justify-content: space-between;"
+                        <span>Booking Updates</span>
+                        <input type="checkbox">
+                    </label>
+
+                    <label class="checkbox-item" style="justify-content: space-between;"
+                        <span>Payment Confirmations</span>
+                        <input type="checkbox">
+                    </label>
+
+                    <label class="checkbox-item" style="justify-content: space-between;"
+                        <span>Event Reminders</span>
+                        <input type="checkbox" checked>
+                    </label>
+                </div>
+
+                <div style="display: flex; gap: 1rem; justify-content: flex-end;"
+                    <button class="btn btn-ghost" onclick="closePreferences()">Cancel</button>
+                    <button class="btn btn-primary" onclick="savePreferences()">Save Preferences</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Toggle notification dropdown
+        document.getElementById('notification-toggle').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('notification-dropdown').classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function() {
+            document.getElementById('notification-dropdown').classList.remove('show');
+        });
+
+        // Filter notifications
+        function filterNotifications(filter) {
+            // Update active tab
+            document.querySelectorAll('.filter-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.textContent.toLowerCase().includes(filter) ||
+                    (filter === 'all' && tab.textContent === 'All')) {
+                    tab.classList.add('active');
+                }
+            });
+
+            // Filter items
+            const items = document.querySelectorAll('.notification-item');
+            items.forEach(item => {
+                if (filter === 'all') {
+                    item.style.display = 'flex';
+                } else if (filter === 'unread') {
+                    item.style.display = item.classList.contains('unread') ? 'flex' : 'none';
+                } else {
+                    item.style.display = item.dataset.type === filter ? 'flex' : 'none';
+                }
+            });
+        }
+
+        // Mark as read
+        function markAsRead(id) {
+            const item = document.querySelector(`[data-id="${id}"]`);
+            if (item) {
+                item.classList.remove('unread');
+                showNotification('Marked as read', 'success');
+                updateUnreadCount();
+            }
+        }
+
+        // Mark all as read
+        function markAllAsRead() {
+            document.querySelectorAll('.notification-item.unread').forEach(item => {
+                item.classList.remove('unread');
+            });
+            showNotification('All notifications marked as read', 'success');
+            updateUnreadCount();
+        }
+
+        // Update unread count
+        function updateUnreadCount() {
+            const count = document.querySelectorAll('.notification-item.unread').length;
+            document.getElementById('notification-count').textContent = count;
+            document.getElementById('sidebar-notification-count').textContent = count;
+        }
+
+        // Preferences modal
+        function openPreferences() {
+            document.getElementById('preferences-modal').style.display = 'flex';
+        }
+
+        function closePreferences() {
+            document.getElementById('preferences-modal').style.display = 'none';
+        }
+
+        function savePreferences() {
+            showNotification('Preferences saved', 'success');
+            closePreferences();
+        }
+
+        // Sort notifications
+        function sortNotifications(order) {
+            showNotification(`Sorted by ${order}`, 'info');
+        }
+
+        // Load more
+        function loadMoreNotifications() {
+            showNotification('Loading more notifications...', 'info');
+        }
+    </script>
+</body>
+</html>

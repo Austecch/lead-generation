@@ -1,0 +1,218 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Emily Experience Brand Colors - Light Mode */
+  --primary: 270 76% 40%;
+  --primary-light: 270 85% 46%;
+  --gold: 46 65% 52%;
+  --gold-light: 50 70% 81%;
+  --bg-primary: 270 33% 7%;
+  --bg-secondary: 270 48% 13%;
+  --bg-card: 270 45% 18%;
+  --text-primary: 0 0% 100%;
+  --text-secondary: 215 20% 93%;
+  --text-muted: 215 16% 63%;
+
+  /* Anthropic Brand Colors */
+  --anthropic-orange: 19 79% 55%;
+  --anthropic-blue: 191 66% 36%;
+  --anthropic-green: 123 40% 40%;
+
+  /* Default Theme Variables */
+  --background: 270 33% 7%;
+  --foreground: 0 0% 100%;
+  --card: 270 45% 18%;
+  --card-foreground: 0 0% 100%;
+  --popover: 270 45% 18%;
+  --popover-foreground: 0 0% 100%;
+  --primary-hsl: 270 76% 40%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 270 48% 13%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 270 30% 25%;
+  --muted-foreground: 215 16% 63%;
+  --accent: 46 65% 52%;
+  --accent-foreground: 270 33% 7%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 270 30% 25%;
+  --input: 270 30% 25%;
+  --ring: 270 76% 40%;
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-[#0F0A1A] text-white antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  /* Luxury Card Styles */
+  .luxury-card {
+    @apply bg-[#261845] border border-purple-500/10 rounded-2xl;
+    @apply shadow-[0_4px_30px_rgba(107,33,168,0.15)];
+    @apply hover:shadow-[0_8px_40px_rgba(107,33,168,0.25)];
+    @apply transition-all duration-300;
+  }
+
+  /* Gold Gradient Text */
+  .gold-gradient-text {
+    @apply bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37] bg-clip-text text-transparent;
+  }
+
+  /* Purple Gradient Button */
+  .btn-primary-gradient {
+    @apply bg-gradient-to-r from-[#6B21A8] to-[#9333EA];
+    @apply text-white font-semibold px-8 py-4;
+    @apply rounded-xl shadow-[0_4px_20px_rgba(147,51,234,0.4)];
+    @apply hover:shadow-[0_8px_30px_rgba(147,51,234,0.6)];
+    @apply hover:scale-[1.02];
+    @apply transition-all duration-300;
+  }
+
+  /* Gold Gradient Button */
+  .btn-gold-gradient {
+    @apply bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37];
+    @apply text-[#0F0A1A] font-bold px-8 py-4;
+    @apply rounded-xl shadow-[0_4px_20px_rgba(212,175,55,0.3)];
+    @apply hover:shadow-[0_8px_30px_rgba(212,175,55,0.5)];
+    @apply hover:scale-[1.02];
+    @apply transition-all duration-300;
+  }
+
+  /* Ghost Button */
+  .btn-ghost {
+    @apply border border-purple-500/30 bg-transparent text-white;
+    @apply px-8 py-4 rounded-xl;
+    @apply hover:bg-purple-500/10 hover:border-purple-500/50;
+    @apply transition-all duration-300;
+  }
+
+  /* Input Fields */
+  .luxury-input {
+    @apply bg-[#1A1033] border border-purple-500/20;
+    @apply rounded-xl px-5 py-4 text-white;
+    @apply placeholder:text-gray-400;
+    @apply focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20;
+    @apply transition-all duration-300;
+  }
+
+  /* Section Divider */
+  .gold-divider {
+    @apply h-1 w-24 bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37];
+    @apply rounded-full mx-auto;
+  }
+
+  /* Glow Effect */
+  .purple-glow {
+    @apply relative;
+  }
+
+  .purple-glow::before {
+    content: '';
+    @apply absolute inset-0 -z-10;
+    @apply bg-gradient-to-r from-purple-600/20 to-purple-400/20;
+    @apply blur-3xl rounded-full;
+    transform: scale(1.5);
+  }
+
+  /* Social Proof Badge */
+  .social-proof-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2;
+    @apply bg-white/5 backdrop-blur-sm rounded-full;
+    @apply border border-white/10;
+  }
+
+  /* Feature Card */
+  .feature-card {
+    @apply luxury-card p-6;
+  }
+
+  /* Trust Badge */
+  .trust-badge {
+    @apply flex items-center gap-3 px-4 py-3;
+    @apply bg-white/5 rounded-xl border border-white/10;
+  }
+
+  /* Floating Animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Pulse Glow */
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(147, 51, 234, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(147, 51, 234, 0.6); }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Shimmer Effect */
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+  }
+
+  /* Count Up Animation */
+  .count-up {
+    @apply font-bold text-4xl gold-gradient-text;
+  }
+
+  /* Form Label */
+  .luxury-label {
+    @apply block text-sm font-medium text-gray-300 mb-2;
+  }
+
+  /* Error Message */
+  .form-error {
+    @apply text-red-400 text-sm mt-1;
+  }
+
+  /* Success Message */
+  .form-success {
+    @apply text-green-400 text-sm mt-1;
+  }
+
+  /* Sticky CTA Bar */
+  .sticky-cta {
+    @apply fixed bottom-0 left-0 right-0 z-50;
+    @apply bg-[#261845]/95 backdrop-blur-lg border-t border-purple-500/20;
+    @apply px-6 py-4;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-gradient-radial {
+    background: radial-gradient(circle at center, var(--tw-gradient-stops));
+  }
+}

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rentals - Emily Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">✨</span>
+                <span class="logo-text">Emily<span class="highlight">Experience</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="event-planning.html">Plan Event</a></li>
+                <li><a href="vendors.html">Vendors</a></li>
+                <li><a href="gifts.html">Gifts</a></li>
+                <li><a href="rentals.html" class="active">Rentals</a></li>
+                <li><a href="tickets.html">Tickets</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="dashboard.html" class="btn btn-ghost">Dashboard</a>
+                <a href="login.html" class="btn btn-primary">Sign In</a>
+            </div>
+            <button class="mobile-toggle" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-link active">
+                    <span class="icon">🪑</span>
+                    <span>All Rentals</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">🪑</span>
+                    <span>Furniture</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">💡</span>
+                    <span>Lighting</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">🎪</span>
+                    <span>Décor</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">🎤</span>
+                    <span>Equipment</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">📦</span>
+                    <span>My Rentals</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Event Rentals 🪑</h1>
+                <p>Rent beautiful furniture, décor, and equipment for your event</p>
+            </div>
+
+            <div class="grid-2" style="margin-bottom: 2rem;">
+                <!-- Availability Calendar -->
+                <div class="card">
+                    <h3 style="margin-bottom: 1rem;">📅 Check Availability</h3>
+                    <div class="calendar-header">
+                        <span>Sun</span>
+                        <span>Mon</span>
+                        <span>Tue</span>
+                        <span>Wed</span>
+                        <span>Thu</span>
+                        <span>Fri</span>
+                        <span>Sat</span>
+                    </div>
+                    <div class="calendar">
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day">1</div>
+                        <div class="calendar-day">2</div>
+                        <div class="calendar-day">3</div>
+                        <div class="calendar-day">4</div>
+                        <div class="calendar-day">5</div>
+                        <div class="calendar-day">6</div>
+                        <div class="calendar-day">7</div>
+                        <div class="calendar-day">8</div>
+                        <div class="calendar-day">9</div>
+                        <div class="calendar-day">10</div>
+                        <div class="calendar-day">11</div>
+                        <div class="calendar-day">12</div>
+                        <div class="calendar-day">13</div>
+                        <div class="calendar-day">14</div>
+                        <div class="calendar-day">15</div>
+                        <div class="calendar-day">16</div>
+                        <div class="calendar-day active">17</div>
+                        <div class="calendar-day available">18</div>
+                        <div class="calendar-day available">19</div>
+                        <div class="calendar-day">20</div>
+                        <div class="calendar-day booked">21</div>
+                        <div class="calendar-day">22</div>
+                        <div class="calendar-day">23</div>
+                        <div class="calendar-day">24</div>
+                        <div class="calendar-day">25</div>
+                        <div class="calendar-day">26</div>
+                        <div class="calendar-day">27</div>
+                        <div class="calendar-day">28</div>
+                        <div class="calendar-day">29</div>
+                        <div class="calendar-day">30</div>
+                        <div class="calendar-day">31</div>
+                    </div>
+
+                    <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem;">
+                            <span style="width: 16px; height: 16px; background: var(--gradient-primary); border-radius: 4px;"></span>
+                            Selected
+                        </span>
+                        <span style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem;">
+                            <span style="width: 16px; height: 16px; border: 1px solid var(--gold); border-radius: 4px;"></span>
+                            Available
+                        </span>
+                        <span style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem;">
+                            <span style="width: 16px; height: 16px; background: var(--bg-secondary); border-radius: 4px; opacity: 0.5;"></span>
+                            Booked
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Cart Summary -->
+                <div class="card">
+                    <h3 style="margin-bottom: 1rem;">🛒 Rental Cart</h3>
+
+                    <div style="min-height: 150px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: var(--text-muted); border: 2px dashed rgba(147, 51, 234, 0.2); border-radius: var(--radius-lg); padding: 1.5rem;">
+                        <span style="font-size: 2rem; margin-bottom: 0.5rem;">🛒</span>
+                        <p style="margin: 0;">Your cart is empty</p>
+                        <small>Add items to get started</small>
+                    </div>
+
+                    <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(147, 51, 234, 0.1);">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Subtotal:</span>
+                            <span>$0.00</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-weight: 600;">
+                            <span>Total:</span>
+                            <span style="color: var(--gold);">$0.00</span>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-lg" style="width: 100%; margin-top: 1rem;">Proceed to Checkout</button>
+                </div>
+            </div>
+
+            <!-- Rental Items -->
+            <h3 style="margin-bottom: 1.5rem;">Available Rentals</h3>
+
+            <div class="gift-grid">
+                <div class="gift-card">
+                    <div class="gift-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                            <span>🪑</span>
+                        </div>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-category">Furniture</span>
+                        <h4>Chiavari Chairs (Set of 50)</h4>
+                        <p class="gift-price">$250/day</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="gift-card">
+                    <div class="gift-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                            <span>🪑</span>
+                        </div>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-category">Furniture</span>
+                        <h4>Round Tables (Set of 10)</h4>
+                        <p class="gift-price">$150/day</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="gift-card">
+                    <div class="gift-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);">
+                            <span>💡</span>
+                        </div>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-category">Lighting</span>
+                        <h4>String Lights Package</h4>
+                        <p class="gift-price">$100/day</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="gift-card">
+                    <div class="gift-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);">
+                            <span>🎪</span>
+                        </div>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-category">Décor</span>
+                        <h4>Archway Backdrop</h4>
+                        <p class="gift-price">$200/day</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="gift-card">
+                    <div class="gift-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <span>🎤</span>
+                        </div>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-category">Equipment</span>
+                        <h4>Sound System Package</h4>
+                        <p class="gift-price">$300/day</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="gift-card">
+                    <div class="gift-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                            <span>🪩</span>
+                        </div>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-category">Décor</span>
+                        <h4>Disco Ball Set</h4>
+                        <p class="gift-price">$75/day</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="gift-card">
+                    <div class="gift-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                            <span>🎥</span>
+                        </div>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-category">Equipment</span>
+                        <h4>Projector & Screen</h4>
+                        <p class="gift-price">$150/day</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="gift-card">
+                    <div class="gift-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                            <span>🪴</span>
+                        </div>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-category">Décor</span>
+                        <h4>Plant Display Package</h4>
+                        <p class="gift-price">$120/day</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

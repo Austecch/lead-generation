@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Planning - Emily Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">✨</span>
+                <span class="logo-text">Emily<span class="highlight">Experience</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="event-planning.html" class="active">Plan Event</a></li>
+                <li><a href="vendors.html">Vendors</a></li>
+                <li><a href="gifts.html">Gifts</a></li>
+                <li><a href="rentals.html">Rentals</a></li>
+                <li><a href="tickets.html">Tickets</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="dashboard.html" class="btn btn-ghost">Dashboard</a>
+                <a href="login.html" class="btn btn-primary">Sign In</a>
+            </div>
+            <button class="mobile-toggle" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="sidebar-link">
+                    <span class="icon">📊</span>
+                    <span>Overview</span>
+                </a>
+                <a href="event-planning.html" class="sidebar-link active">
+                    <span class="icon">📅</span>
+                    <span>My Events</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">🛒</span>
+                    <span>Bookings</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">🎁</span>
+                    <span>Gifts</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">💳</span>
+                    <span>Payments</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">👤</span>
+                    <span>Profile</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Plan Your Event 🎉</h1>
+                <p>Create and manage your perfect celebration</p>
+            </div>
+
+            <!-- Step Indicator -->
+            <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+                <div id="step-1" class="step-indicator active" style="width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-weight: 600;">1</div>
+                <div style="width: 50px; height: 2px; background: rgba(147, 51, 234, 0.3); align-self: center;"></div>
+                <div id="step-2" class="step-indicator" style="width: 40px; height: 40px; border-radius: 50%; background: var(--bg-card); border: 2px solid rgba(147, 51, 234, 0.3); display: flex; align-items: center; justify-content: center; font-weight: 600;">2</div>
+                <div style="width: 50px; height: 2px; background: rgba(147, 51, 234, 0.3); align-self: center;"></div>
+                <div id="step-3" class="step-indicator" style="width: 40px; height: 40px; border-radius: 50%; background: var(--bg-card); border: 2px solid rgba(147, 51, 234, 0.3); display: flex; align-items: center; justify-content: center; font-weight: 600;">3</div>
+                <div style="width: 50px; height: 2px; background: rgba(147, 51, 234, 0.3); align-self: center;"></div>
+                <div id="step-4" class="step-indicator" style="width: 40px; height: 40px; border-radius: 50%; background: var(--bg-card); border: 2px solid rgba(147, 51, 234, 0.3); display: flex; align-items: center; justify-content: center; font-weight: 600;">4</div>
+            </div>
+
+            <!-- Step 1: Event Details -->
+            <div id="step-content-1" class="card" style="max-width: 800px; margin: 0 auto 2rem;">
+                <h2 style="margin-bottom: 1.5rem;">Step 1: Event Details</h2>
+                <form>
+                    <div class="form-group">
+                        <label class="form-label">Event Name</label>
+                        <input type="text" class="form-input" placeholder="e.g., Sarah's Wedding">
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Event Type</label>
+                            <select class="form-select">
+                                <option value="">Select type</option>
+                                <option value="wedding">Wedding</option>
+                                <option value="birthday">Birthday</option>
+                                <option value="corporate">Corporate</option>
+                                <option value="proposal">Proposal</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Expected Guests</label>
+                            <input type="number" class="form-input" placeholder="e.g., 150">
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Event Date</label>
+                            <input type="date" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Event Time</label>
+                            <input type="time" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Location</label>
+                        <input type="text" class="form-input" placeholder="Enter event location">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-textarea" placeholder="Tell us about your vision for this event..."></textarea>
+                    </div>
+
+                    <div style="display: flex; justify-content: flex-end;">
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">Next: Budget & Preferences →</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Step 2: Budget -->
+            <div id="step-content-2" class="card" style="max-width: 800px; margin: 0 auto 2rem; display: none;">
+                <h2 style="margin-bottom: 1.5rem;">Step 2: Budget Planning</h2>
+
+                <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: var(--radius-lg); margin-bottom: 2rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span>Total Budget</span>
+                        <span style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold);">$20,000</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="budget-progress" class="progress-fill" style="width: 45%;"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
+                        <span style="color: var(--text-muted); font-size: 0.9rem;">Spent: <span id="budget-spent">$9,000</span></span>
+                        <span style="color: var(--text-muted); font-size: 0.9rem;">Remaining: <span id="budget-remaining">$11,000</span></span>
+                    </div>
+                </div>
+
+                <form>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Total Budget</label>
+                            <input type="number" id="total-budget" class="form-input" placeholder="$20,000" value="20000" onchange="calculateBudget()">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Venue Budget</label>
+                            <input type="number" id="venue-budget" class="form-input" placeholder="$5,000" value="5000" onchange="calculateBudget()">
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Catering Budget</label>
+                            <input type="number" id="catering-budget" class="form-input" placeholder="$6,000" value="6000" onchange="calculateBudget()">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Decor Budget</label>
+                            <input type="number" id="decor-budget" class="form-input" placeholder="$2,000" value="2000" onchange="calculateBudget()">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Other Expenses</label>
+                        <input type="number" id="other-budget" class="form-input" placeholder="$1,000" value="1000" onchange="calculateBudget()">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Preferred Style</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="style" value="elegant">
+                                <span>Elegant</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="style" value="modern">
+                                <span>Modern</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="style" value="rustic">
+                                <span>Rustic</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="style" value="themed">
+                                <span>Themed</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between;">
+                        <button type="button" class="btn btn-ghost" onclick="prevStep()">← Back</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">Next: Find Vendors →</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Step 3: AI Recommendations -->
+            <div id="step-content-3" class="card" style="max-width: 800px; margin: 0 auto 2rem; display: none;">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                    <span style="font-size: 2rem;">🤖</span>
+                    <div>
+                        <h2 style="margin: 0;">AI Recommendations</h2>
+                        <p style="margin: 0; color: var(--text-muted);">Based on your budget and preferences</p>
+                    </div>
+                </div>
+
+                <div style="background: rgba(147, 51, 234, 0.1); border: 1px solid rgba(147, 51, 234, 0.2); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 2rem;">
+                    <h4 style="margin-bottom: 1rem; color: var(--gold);">💡 Recommended Theme: Elegant Garden</h4>
+                    <p style="margin-bottom: 1rem;">Based on your budget of $20,000 and preference for elegant style, we recommend an elegant garden theme with floral arrangements and soft lighting.</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <span style="padding: 0.25rem 0.75rem; background: rgba(147, 51, 234, 0.2); border-radius: var(--radius-full); font-size: 0.85rem;">Floral Decor</span>
+                        <span style="padding: 0.25rem 0.75rem; background: rgba(147, 51, 234, 0.2); border-radius: var(--radius-full); font-size: 0.85rem;">String Lights</span>
+                        <span style="padding: 0.25rem 0.75rem; background: rgba(147, 51, 234, 0.2); border-radius: var(--radius-full); font-size: 0.85rem;">Vintage Furniture</span>
+                    </div>
+                </div>
+
+                <h4 style="margin-bottom: 1rem;">🎯 Recommended Vendors</h4>
+                <div style="display: grid; gap: 1rem; margin-bottom: 2rem;">
+                    <div style="display: flex; gap: 1rem; padding: 1rem; background: var(--bg-secondary); border-radius: var(--radius-lg); border: 1px solid rgba(147, 51, 234, 0.1);">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">📸</div>
+                        <div style="flex: 1;">
+                            <h5 style="margin: 0 0 0.25rem;">Golden Lens Photography</h5>
+                            <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">★★★★★ 4.9 • Photography • $2,500</p>
+                        </div>
+                        <button class="btn btn-primary" style="padding: 0.5rem 1rem;">Add</button>
+                    </div>
+                    <div style="display: flex; gap: 1rem; padding: 1rem; background: var(--bg-secondary); border-radius: var(--radius-lg); border: 1px solid rgba(147, 51, 234, 0.1);">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🌸</div>
+                        <div style="flex: 1;">
+                            <h5 style="margin: 0 0 0.25rem;">Bloom & Blossom Florals</h5>
+                            <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">★★★★★ 4.8 • Floral Design • $1,800</p>
+                        </div>
+                        <button class="btn btn-primary" style="padding: 0.5rem 1rem;">Add</button>
+                    </div>
+                    <div style="display: flex; gap: 1rem; padding: 1rem; background: var(--bg-secondary); border-radius: var(--radius-lg); border: 1px solid rgba(147, 51, 234, 0.1);">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🍽️</div>
+                        <div style="flex: 1;">
+                            <h5 style="margin: 0 0 0.25rem;">Royal Catering Co.</h5>
+                            <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">★★★★☆ 4.7 • Catering • $6,500</p>
+                        </div>
+                        <button class="btn btn-primary" style="padding: 0.5rem 1rem;">Add</button>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between;">
+                    <button type="button" class="btn btn-ghost" onclick="prevStep()">← Back</button>
+                    <button type="button" class="btn btn-primary" onclick="nextStep()">Next: Timeline →</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Timeline -->
+            <div id="step-content-4" class="card" style="max-width: 800px; margin: 0 auto 2rem; display: none;">
+                <h2 style="margin-bottom: 1.5rem;">Step 4: Event Timeline</h2>
+
+                <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: var(--radius-lg); margin-bottom: 2rem;">
+                    <h4 style="margin-bottom: 1rem;">📋 Task Checklist</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <label class="checkbox-item" style="padding: 0.75rem; background: rgba(16, 185, 129, 0.1); border-radius: var(--radius-md);">
+                            <input type="checkbox" checked>
+                            <span>Book venue</span>
+                        </label>
+                        <label class="checkbox-item" style="padding: 0.75rem; background: rgba(16, 185, 129, 0.1); border-radius: var(--radius-md);">
+                            <input type="checkbox" checked>
+                            <span>Send save the dates</span>
+                        </label>
+                        <label class="checkbox-item" style="padding: 0.75rem; background: rgba(245, 158, 11, 0.1); border-radius: var(--radius-md);">
+                            <input type="checkbox">
+                            <span>Book photographer</span>
+                        </label>
+                        <label class="checkbox-item" style="padding: 0.75rem; background: rgba(245, 158, 11, 0.1); border-radius: var(--radius-md);">
+                            <input type="checkbox">
+                            <span>Order flowers</span>
+                        </label>
+                        <label class="checkbox-item" style="padding: 0.75rem; background: rgba(147, 51, 234, 0.1); border-radius: var(--radius-md);">
+                            <input type="checkbox">
+                            <span>Confirm catering</span>
+                        </label>
+                        <label class="checkbox-item" style="padding: 0.75rem; background: rgba(147, 51, 234, 0.1); border-radius: var(--radius-md);">
+                            <input type="checkbox">
+                            <span>Send invitations</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Guest List</label>
+                    <textarea class="form-textarea" placeholder="Enter guest names, one per line..."></textarea>
+                </div>
+
+                <div style="display: flex; justify-content: space-between;">
+                    <button type="button" class="btn btn-ghost" onclick="prevStep()">← Back</button>
+                    <button type="submit" class="btn btn-primary btn-lg">Create Event 🎉</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

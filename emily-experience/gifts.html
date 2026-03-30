@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gifts - Emily Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">✨</span>
+                <span class="logo-text">Emily<span class="highlight">Experience</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="event-planning.html">Plan Event</a></li>
+                <li><a href="vendors.html">Vendors</a></li>
+                <li><a href="gifts.html" class="active">Gifts</a></li>
+                <li><a href="rentals.html">Rentals</a></li>
+                <li><a href="tickets.html">Tickets</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="dashboard.html" class="btn btn-ghost">Dashboard</a>
+                <a href="login.html" class="btn btn-primary">Sign In</a>
+            </div>
+            <button class="mobile-toggle" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-link">
+                    <span class="icon">💝</span>
+                    <span>All Gifts</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">🎁</span>
+                    <span>Bundles</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">💎</span>
+                    <span>Luxury</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">🧸</span>
+                    <span>Kids</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">💼</span>
+                    <span>Corporate</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">❤️</span>
+                    <span>Wishlist</span>
+                    <span id="wishlist-count" style="margin-left: auto; background: var(--gold); color: var(--bg-primary); padding: 0.15rem 0.5rem; border-radius: var(--radius-full); font-size: 0.75rem;">0</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Gift Marketplace 🎁</h1>
+                <p>Perfect gifts for every occasion</p>
+            </div>
+
+            <!-- Search & Filter -->
+            <div class="card" style="margin-bottom: 2rem;">
+                <div style="display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: end;">
+                    <div class="form-group" style="margin: 0;">
+                        <label class="form-label">Search Gifts</label>
+                        <input type="text" class="form-input" placeholder="Search for the perfect gift..." onkeyup="searchGifts(this.value)">
+                    </div>
+                    <div class="form-group" style="margin: 0;">
+                        <label class="form-label">Category</label>
+                        <select class="form-select" onchange="filterGifts(this.value)">
+                            <option value="all">All Categories</option>
+                            <option value="romantic">Romantic</option>
+                            <option value="luxury">Luxury</option>
+                            <option value="kids">Kids</option>
+                            <option value="corporate">Corporate</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Bundles -->
+            <h3 style="margin-bottom: 1.5rem;">Gift Bundles</h3>
+            <div class="gift-grid" style="margin-bottom: 3rem;">
+                <div class="gift-card" data-category="romantic">
+                    <div class="gift-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                            <span>💝</span>
+                        </div>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-category">Romantic</span>
+                        <h4>Love & Romance Bundle</h4>
+                        <p class="gift-price">$89.99</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;" onclick="toggleWishlist(1)">Add to Wishlist</button>
+                    </div>
+                </div>
+
+                <div class="gift-card" data-category="luxury">
+                    <div class="gift-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                            <span>🎁</span>
+                        </div>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-category">Luxury</span>
+                        <h4>Premium Gift Box</h4>
+                        <p class="gift-price">$149.99</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;" onclick="toggleWishlist(2)">Add to Wishlist</button>
+                    </div>
+                </div>
+
+                <div class="gift-card" data-category="kids">
+                    <div class="gift-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);">
+                            <span>🧸</span>
+                        </div>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-category">Kids</span>
+                        <h4>Children's Joy Pack</h4>
+                        <p class="gift-price">$59.99</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;" onclick="toggleWishlist(3)">Add to Wishlist</button>
+                    </div>
+                </div>
+
+                <div class="gift-card" data-category="corporate">
+                    <div class="gift-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);">
+                            <span>💼</span>
+                        </div>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-category">Corporate</span>
+                        <h4>Executive Gift Set</h4>
+                        <p class="gift-price">$199.99</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;" onclick="toggleWishlist(4)">Add to Wishlist</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- All Products -->
+            <h3 style="margin-bottom: 1.5rem;">All Products</h3>
+            <div class="gift-grid">
+                <div class="gift-card" data-category="romantic">
+                    <div class="gift-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <span>🌹</span>
+                        </div>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-category">Romantic</span>
+                        <h4>Red Rose Bouquet</h4>
+                        <p class="gift-price">$49.99</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;" onclick="toggleWishlist(5)">Add to Wishlist</button>
+                    </div>
+                </div>
+
+                <div class="gift-card" data-category="luxury">
+                    <div class="gift-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                            <span>💎</span>
+                        </div>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-category">Luxury</span>
+                        <h4>Crystal Wine Set</h4>
+                        <p class="gift-price">$299.99</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;" onclick="toggleWishlist(6)">Add to Wishlist</button>
+                    </div>
+                </div>
+
+                <div class="gift-card" data-category="kids">
+                    <div class="gift-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                            <span>🎨</span>
+                        </div>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-category">Kids</span>
+                        <h4>Art & Craft Kit</h4>
+                        <p class="gift-price">$34.99</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;" onclick="toggleWishlist(7)">Add to Wishlist</button>
+                    </div>
+                </div>
+
+                <div class="gift-card" data-category="corporate">
+                    <div class="gift-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                            <span>☕</span>
+                        </div>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-category">Corporate</span>
+                        <h4>Premium Coffee Set</h4>
+                        <p class="gift-price">$79.99</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;" onclick="toggleWishlist(8)">Add to Wishlist</button>
+                    </div>
+                </div>
+
+                <div class="gift-card" data-category="romantic">
+                    <div class="gift-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);">
+                            <span>💌</span>
+                        </div>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-category">Romantic</span>
+                        <h4>Love Letter Set</h4>
+                        <p class="gift-price">$29.99</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;" onclick="toggleWishlist(9)">Add to Wishlist</button>
+                    </div>
+                </div>
+
+                <div class="gift-card" data-category="luxury">
+                    <div class="gift-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);">
+                            <span>🕯️</span>
+                        </div>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-category">Luxury</span>
+                        <h4>Designer Candle Set</h4>
+                        <p class="gift-price">$119.99</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;" onclick="toggleWishlist(10)">Add to Wishlist</button>
+                    </div>
+                </div>
+
+                <div class="gift-card" data-category="kids">
+                    <div class="gift-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <span>🦄</span>
+                        </div>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-category">Kids</span>
+                        <h4>Unicorn Plush Toy</h4>
+                        <p class="gift-price">$24.99</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;" onclick="toggleWishlist(11)">Add to Wishlist</button>
+                    </div>
+                </div>
+
+                <div class="gift-card" data-category="corporate">
+                    <div class="gift-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                            <span>🖊️</span>
+                        </div>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-category">Corporate</span>
+                        <h4>Executive Pen Set</h4>
+                        <p class="gift-price">$89.99</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;" onclick="toggleWishlist(12)">Add to Wishlist</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendors - Emily Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">✨</span>
+                <span class="logo-text">Emily<span class="highlight">Experience</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="event-planning.html">Plan Event</a></li>
+                <li><a href="vendors.html" class="active">Vendors</a></li>
+                <li><a href="gifts.html">Gifts</a></li>
+                <li><a href="rentals.html">Rentals</a></li>
+                <li><a href="tickets.html">Tickets</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="dashboard.html" class="btn btn-ghost">Dashboard</a>
+                <a href="login.html" class="btn btn-primary">Sign In</a>
+            </div>
+            <button class="mobile-toggle" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="sidebar-link">
+                    <span class="icon">📊</span>
+                    <span>Overview</span>
+                </a>
+                <a href="vendors.html" class="sidebar-link active">
+                    <span class="icon">🧑‍💼</span>
+                    <span>All Vendors</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">📸</span>
+                    <span>Photography</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">🍽️</span>
+                    <span>Catering</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">🌸</span>
+                    <span>Florals</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">🎵</span>
+                    <span>Entertainment</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">🎪</span>
+                    <span>Venues</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Vendor Marketplace 🧑‍💼</h1>
+                <p>Discover top-rated professionals for your event</p>
+            </div>
+
+            <!-- Search & Filter -->
+            <div class="card" style="margin-bottom: 2rem;">
+                <div style="display: grid; grid-template-columns: 1fr auto auto; gap: 1rem; align-items: end;">
+                    <div class="form-group" style="margin: 0;">
+                        <label class="form-label">Search Vendors</label>
+                        <input type="text" class="form-input" placeholder="Search by name or service..." onkeyup="searchVendors(this.value)">
+                    </div>
+                    <div class="form-group" style="margin: 0;">
+                        <label class="form-label">Category</label>
+                        <select class="form-select" onchange="filterVendors(this.value)">
+                            <option value="all">All Categories</option>
+                            <option value="photography">Photography</option>
+                            <option value="catering">Catering</option>
+                            <option value="floral">Floral</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="venue">Venue</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin: 0;">
+                        <label class="form-label">Sort By</label>
+                        <select class="form-select">
+                            <option>Top Rated</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                            <option>Newest</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap;">
+                    <span style="padding: 0.4rem 0.75rem; background: rgba(147, 51, 234, 0.15); border-radius: var(--radius-full); font-size: 0.85rem;">⭐ 4.5+ Rating</span>
+                    <span style="padding: 0.4rem 0.75rem; background: rgba(147, 51, 234, 0.15); border-radius: var(--radius-full); font-size: 0.85rem;">✓ Verified</span>
+                    <span style="padding: 0.4rem 0.75rem; background: rgba(147, 51, 234, 0.15); border-radius: var(--radius-full); font-size: 0.85rem;">💎 Premium</span>
+                    <span style="padding: 0.4rem 0.75rem; background: rgba(147, 51, 234, 0.15); border-radius: var(--radius-full); font-size: 0.85rem;">📍 Near You</span>
+                </div>
+            </div>
+
+            <!-- Featured Vendors -->
+            <h3 style="margin-bottom: 1.5rem;">Featured Vendors</h3>
+            <div class="vendor-grid" style="margin-bottom: 3rem;">
+                <div class="vendor-card" data-category="photography">
+                    <div class="vendor-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                            <span>📸</span>
+                        </div>
+                        <span class="vendor-badge premium">Premium</span>
+                    </div>
+                    <div class="vendor-info">
+                        <h4>Golden Lens Photography</h4>
+                        <div class="vendor-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">4.9 (127 reviews)</span>
+                        </div>
+                        <p class="vendor-category">Photography</p>
+                        <div class="vendor-price">From $500</div>
+                    </div>
+                </div>
+
+                <div class="vendor-card" data-category="floral">
+                    <div class="vendor-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                            <span>🌸</span>
+                        </div>
+                        <span class="vendor-badge">Verified</span>
+                    </div>
+                    <div class="vendor-info">
+                        <h4>Bloom & Blossom Florals</h4>
+                        <div class="vendor-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">4.8 (89 reviews)</span>
+                        </div>
+                        <p class="vendor-category">Floral Design</p>
+                        <div class="vendor-price">From $300</div>
+                    </div>
+                </div>
+
+                <div class="vendor-card" data-category="entertainment">
+                    <div class="vendor-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);">
+                            <span>🎵</span>
+                        </div>
+                        <span class="vendor-badge premium">Premium</span>
+                    </div>
+                    <div class="vendor-info">
+                        <h4>Harmony Events DJ</h4>
+                        <div class="vendor-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">4.9 (203 reviews)</span>
+                        </div>
+                        <p class="vendor-category">Entertainment</p>
+                        <div class="vendor-price">From $400</div>
+                    </div>
+                </div>
+
+                <div class="vendor-card" data-category="catering">
+                    <div class="vendor-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);">
+                            <span>🍽️</span>
+                        </div>
+                        <span class="vendor-badge">Verified</span>
+                    </div>
+                    <div class="vendor-info">
+                        <h4>Royal Catering Co.</h4>
+                        <div class="vendor-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-text">4.7 (156 reviews)</span>
+                        </div>
+                        <p class="vendor-category">Catering</p>
+                        <div class="vendor-price">From $25/person</div>
+                    </div>
+                </div>
+
+                <div class="vendor-card" data-category="venue">
+                    <div class="vendor-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <span>🏰</span>
+                        </div>
+                        <span class="vendor-badge premium">Premium</span>
+                    </div>
+                    <div class="vendor-info">
+                        <h4>Grand Palace Venue</h4>
+                        <div class="vendor-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">4.9 (82 reviews)</span>
+                        </div>
+                        <p class="vendor-category">Venue</p>
+                        <div class="vendor-price">From $3,000</div>
+                    </div>
+                </div>
+
+                <div class="vendor-card" data-category="photography">
+                    <div class="vendor-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                            <span>🎥</span>
+                        </div>
+                        <span class="vendor-badge">Verified</span>
+                    </div>
+                    <div class="vendor-info">
+                        <h4>Cinematic Moments</h4>
+                        <div class="vendor-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">4.8 (64 reviews)</span>
+                        </div>
+                        <p class="vendor-category">Videography</p>
+                        <div class="vendor-price">From $800</div>
+                    </div>
+                </div>
+
+                <div class="vendor-card" data-category="catering">
+                    <div class="vendor-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                            <span>🎂</span>
+                        </div>
+                        <span class="vendor-badge premium">Premium</span>
+                    </div>
+                    <div class="vendor-info">
+                        <h4>Sweet Dreams Bakery</h4>
+                        <div class="vendor-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">4.9 (145 reviews)</span>
+                        </div>
+                        <p class="vendor-category">Cakes & Desserts</p>
+                        <div class="vendor-price">From $200</div>
+                    </div>
+                </div>
+
+                <div class="vendor-card" data-category="floral">
+                    <div class="vendor-image">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                            <span>🎈</span>
+                        </div>
+                        <span class="vendor-badge">Verified</span>
+                    </div>
+                    <div class="vendor-info">
+                        <h4>Party Decor Studio</h4>
+                        <div class="vendor-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-text">4.6 (98 reviews)</span>
+                        </div>
+                        <p class="vendor-category">Decorations</p>
+                        <div class="vendor-price">From $150</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Become a Vendor CTA -->
+            <div class="card" style="background: var(--gradient-primary);">
+                <div style="text-align: center; padding: 2rem;">
+                    <h2 style="margin-bottom: 1rem;">Are You an Event Professional?</h2>
+                    <p style="margin-bottom: 1.5rem; opacity: 0.9;">Join our marketplace and reach thousands of customers planning their perfect events</p>
+                    <a href="#" class="btn btn-white btn-lg">Become a Vendor</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

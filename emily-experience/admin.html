@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Emily Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">✨</span>
+                <span class="logo-text">Emily<span class="highlight">Experience</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="event-planning.html">Plan Event</a></li>
+                <li><a href="vendors.html">Vendors</a></li>
+                <li><a href="gifts.html">Gifts</a></li>
+                <li><a href="rentals.html">Rentals</a></li>
+                <li><a href="tickets.html">Tickets</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="admin.html" class="btn btn-ghost active">Admin</a>
+                <a href="login.html" class="btn btn-primary">Sign Out</a>
+            </div>
+            <button class="mobile-toggle" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-link active">
+                    <span class="icon">📊</span>
+                    <span>Analytics</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">👥</span>
+                    <span>Users</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">🧑‍💼</span>
+                    <span>Vendors</span>
+                    <span style="margin-left: auto; background: var(--gold); color: var(--bg-primary); padding: 0.15rem 0.5rem; border-radius: var(--radius-full); font-size: 0.75rem;">12</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">💰</span>
+                    <span>Revenue</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">📦</span>
+                    <span>Orders</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">🎫</span>
+                    <span>Events</span>
+                </a>
+                <a href="#" class="sidebar-link">
+                    <span class="icon">⚙️</span>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Admin Dashboard 👑</h1>
+                <p>Platform overview and management</p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">👥</div>
+                        <span class="stat-change">+234 this week</span>
+                    </div>
+                    <div class="stat-value">12,450</div>
+                    <div class="stat-label">Total Users</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">🧑‍💼</div>
+                        <span class="stat-change">+18 this week</span>
+                    </div>
+                    <div class="stat-value">524</div>
+                    <div class="stat-label">Active Vendors</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">📅</div>
+                        <span class="stat-change">+156 this week</span>
+                    </div>
+                    <div class="stat-value">2,840</div>
+                    <div class="stat-label">Events Created</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">💰</div>
+                        <span class="stat-change">+12% this month</span>
+                    </div>
+                    <div class="stat-value">$284K</div>
+                    <div class="stat-label">Revenue This Month</div>
+                </div>
+            </div>
+
+            <div class="grid-2" style="margin-bottom: 2rem;">
+                <!-- Revenue Chart -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">📈 Revenue Overview</h3>
+                        <select class="form-select" style="width: auto;">
+                            <option>This Week</option>
+                            <option>This Month</option>
+                            <option>This Year</option>
+                        </select>
+                    </div>
+
+                    <div style="height: 250px; display: flex; align-items: end; gap: 1rem; padding: 1rem 0;">
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                            <div style="width: 100%; height: 120px; background: var(--gradient-primary); border-radius: var(--radius-sm) var(--radius-sm) 0 0;"></div>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">Mon</span>
+                        </div>
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                            <div style="width: 100%; height: 180px; background: var(--gradient-primary); border-radius: var(--radius-sm) var(--radius-sm) 0 0;"></div>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">Tue</span>
+                        </div>
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                            <div style="width: 100%; height: 150px; background: var(--gradient-primary); border-radius: var(--radius-sm) var(--radius-sm) 0 0;"></div>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">Wed</span>
+                        </div>
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                            <div style="width: 100%; height: 200px; background: var(--gradient-primary); border-radius: var(--radius-sm) var(--radius-sm) 0 0;"></div>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">Thu</span>
+                        </div>
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                            <div style="width: 100%; height: 220px; background: var(--gradient-primary); border-radius: var(--radius-sm) var(--radius-sm) 0 0;"></div>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">Fri</span>
+                        </div>
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                            <div style="width: 100%; height: 100px; background: var(--gradient-primary); border-radius: var(--radius-sm) var(--radius-sm) 0 0;"></div>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">Sat</span>
+                        </div>
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                            <div style="width: 100%; height: 80px; background: var(--gradient-primary); border-radius: var(--radius-sm) var(--radius-sm) 0 0;"></div>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">Sun</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vendor Approvals -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">🧑‍💼 Pending Vendor Approvals</h3>
+                        <a href="#" class="btn btn-ghost" style="padding: 0.5rem 1rem;">View All</a>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="display: flex; gap: 1rem; padding: 1rem; background: var(--bg-secondary); border-radius: var(--radius-lg); border: 1px solid rgba(147, 51, 234, 0.1);">
+                            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">📸</div>
+                            <div style="flex: 1;">
+                                <h4 style="margin: 0 0 0.25rem;">Crystal Photography</h4>
+                                <p style="margin: 0; color: var(--text-muted); font-size: 0.85rem;">Photography • Applied 2 hours ago</p>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="padding: 0.5rem 1rem;">Approve</button>
+                                <button class="btn btn-ghost" style="padding: 0.5rem 1rem;">Reject</button>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; padding: 1rem; background: var(--bg-secondary); border-radius: var(--radius-lg); border: 1px solid rgba(147, 51, 234, 0.1);">
+                            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🍽️</div>
+                            <div style="flex: 1;">
+                                <h4 style="margin: 0 0 0.25rem;">Gourmet Catering Co.</h4>
+                                <p style="margin: 0; color: var(--text-muted); font-size: 0.85rem;">Catering • Applied 5 hours ago</p>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="padding: 0.5rem 1rem;">Approve</button>
+                                <button class="btn btn-ghost" style="padding: 0.5rem 1rem;">Reject</button>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; padding: 1rem; background: var(--bg-secondary); border-radius: var(--radius-lg); border: 1px solid rgba(147, 51, 234, 0.1);">
+                            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🎵</div>
+                            <div style="flex: 1;">
+                                <h4 style="margin: 0 0 0.25rem;">Melody Events</h4>
+                                <p style="margin: 0; color: var(--text-muted); font-size: 0.85rem;">Entertainment • Applied 1 day ago</p>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="padding: 0.5rem 1rem;">Approve</button>
+                                <button class="btn btn-ghost" style="padding: 0.5rem 1rem;">Reject</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Transactions -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">💳 Recent Transactions</h3>
+                    <a href="#" class="btn btn-ghost">View All</a>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Transaction ID</th>
+                                <th>User</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#TRX-2847</td>
+                                <td><strong>Sarah Johnson</strong></td>
+                                <td>Vendor Booking</td>
+                                <td style="color: var(--gold);">+$250.00</td>
+                                <td><span class="status status-success">Completed</span></td>
+                                <td>Mar 27, 2026</td>
+                            </tr>
+                            <tr>
+                                <td>#TRX-2846</td>
+                                <td><strong>Michael Chen</strong></td>
+                                <td>Gift Purchase</td>
+                                <td style="color: var(--gold);">+$89.99</td>
+                                <td><span class="status status-success">Completed</span></td>
+                                <td>Mar 27, 2026</td>
+                            </tr>
+                            <tr>
+                                <td>#TRX-2845</td>
+                                <td><strong>Emily Davis</strong></td>
+                                <td>Rental Booking</td>
+                                <td style="color: var(--gold);">+$450.00</td>
+                                <td><span class="status status-pending">Pending</span></td>
+                                <td>Mar 26, 2026</td>
+                            </tr>
+                            <tr>
+                                <td>#TRX-2844</td>
+                                <td><strong>James Wilson</strong></td>
+                                <td>Ticket Purchase</td>
+                                <td style="color: var(--gold);">+$120.00</td>
+                                <td><span class="status status-success">Completed</span></td>
+                                <td>Mar 26, 2026</td>
+                            </tr>
+                            <tr>
+                                <td>#TRX-2843</td>
+                                <td><strong>Lisa Anderson</strong></td>
+                                <td>Vendor Booking</td>
+                                <td style="color: var(--gold);">+$1,800.00</td>
+                                <td><span class="status status-success">Completed</span></td>
+                                <td>Mar 25, 2026</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
