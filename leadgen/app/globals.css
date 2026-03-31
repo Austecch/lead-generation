@@ -288,3 +288,168 @@ h1, h2, h3, h4, h5, h6 {
     background: radial-gradient(circle at center, var(--tw-gradient-stops));
   }
 }
+
+/* ========== STITCH DASHBOARD THEME ========== */
+@layer components {
+  /* Base Card Component */
+  .card {
+    @apply bg-[#232f3e] border border-[#2d3f52] rounded-lg p-6 transition-all duration-300;
+  }
+
+  .card:hover {
+    @apply border-[#06d6a0]/20 shadow-lg shadow-[#06d6a0]/10;
+  }
+
+  .card-hover:hover {
+    @apply shadow-lg shadow-[#06d6a0]/10;
+  }
+
+  /* Button Components */
+  .btn {
+    @apply px-4 py-2 rounded-lg font-semibold transition-all duration-200 flex items-center gap-2;
+  }
+
+  .btn-primary {
+    @apply bg-[#06d6a0] text-black hover:bg-[#04c777] active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border-2 border-[#06d6a0] text-[#06d6a0] hover:bg-[#06d6a0]/10;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-gray-400 hover:bg-[#232f3e] hover:text-white;
+  }
+
+  /* Input Component */
+  .input {
+    @apply bg-[#1a202c] border border-[#2d3f52] rounded-lg px-3 py-2 text-white
+      placeholder-gray-500 transition-all duration-200
+      focus:ring-2 focus:ring-[#06d6a0]/20 focus:border-[#06d6a0] outline-none;
+  }
+
+  /* Badge Components */
+  .badge {
+    @apply inline-block px-3 py-1 rounded text-xs font-semibold uppercase;
+  }
+
+  .badge-hot {
+    @apply bg-[#ef4444]/10 text-[#ef4444];
+  }
+
+  .badge-warm {
+    @apply bg-[#eab308]/10 text-[#eab308];
+  }
+
+  .badge-cold {
+    @apply bg-[#3b82f6]/10 text-[#3b82f6];
+  }
+
+  .badge-active {
+    @apply bg-[#06d6a0]/10 text-[#06d6a0];
+  }
+
+  .badge-paused {
+    @apply bg-[#94a3b8]/10 text-[#94a3b8];
+  }
+
+  .badge-sent {
+    @apply bg-[#06d6a0]/10 text-[#06d6a0];
+  }
+
+  .badge-scheduled {
+    @apply bg-[#3b82f6]/10 text-[#3b82f6];
+  }
+
+  .badge-draft {
+    @apply bg-[#94a3b8]/10 text-[#94a3b8];
+  }
+
+  .badge-completed {
+    @apply bg-[#10b981]/10 text-[#10b981];
+  }
+
+  /* Metric Card Component */
+  .metric-card {
+    @apply bg-gradient-to-br from-[#1a202c] to-[#232f3e] 
+      border border-[#2d3f52] rounded-lg p-6
+      hover:border-[#06d6a0]/20 transition-all duration-300;
+  }
+
+  .metric-value {
+    @apply text-3xl font-bold text-[#06d6a0] leading-tight;
+  }
+
+  .metric-label {
+    @apply text-xs uppercase tracking-widest text-[#94a3b8];
+  }
+
+  /* Table Styles */
+  table {
+    @apply w-full border-collapse;
+  }
+
+  table thead th {
+    @apply border-b border-[#2d3f52] py-3 px-4 text-left text-xs font-semibold
+      text-gray-400 uppercase tracking-wide;
+  }
+
+  table tbody tr {
+    @apply border-b border-[#2d3f52] hover:bg-[#1a202c]/50 transition-colors;
+  }
+
+  table tbody tr:last-child {
+    @apply border-b-0;
+  }
+
+  table td {
+    @apply py-3 px-4 text-sm text-gray-300;
+  }
+
+  /* Form Input Styling */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  textarea,
+  select {
+    @apply bg-[#1a202c] border border-[#2d3f52] rounded-lg px-4 py-2 text-white
+      placeholder-gray-500 transition-all duration-200
+      focus:ring-2 focus:ring-[#06d6a0]/20 focus:border-[#06d6a0] outline-none;
+  }
+
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0f131a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #2d3f52;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #06d6a0;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-[#06d6a0] via-[#06e5ff] to-[#10b981] 
+      bg-clip-text text-transparent;
+  }
+
+  /* Utility: Flex Between */
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  /* Utility: Grid Responsive */
+  .grid-responsive {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6;
+  }
+}
