@@ -6,7 +6,7 @@ import DataTable from '@/components/DataTable';
 import { TrendingUp, Users, MessageSquare, Calendar, Percent, AlertCircle } from 'lucide-react';
 
 export default function DashboardPage() {
-  const metricsData = [
+  const metricsData: Array<{ label: string; value: string | number; icon: React.ReactElement; trend: { direction: 'up' | 'down'; percentage: number } }> = [
     { label: 'Total Leads', value: 2847, icon: <Users size={20} />, trend: { direction: 'up', percentage: 12 } },
     { label: 'Qualified Leads', value: 487, icon: <AlertCircle size={20} />, trend: { direction: 'up', percentage: 8 } },
     { label: 'Active Campaigns', value: 12, icon: <TrendingUp size={20} />, trend: { direction: 'up', percentage: 3 } },

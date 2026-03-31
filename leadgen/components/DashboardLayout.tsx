@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Menu, X, BarChart3, Users, Briefcase, MessageSquare, TrendingUp, Settings, LogOut } from 'lucide-react';
 
-export default function DashboardLayout({ children }) {
+export default function DashboardLayout({ children }: { children: ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const pathname = usePathname();
 
@@ -17,7 +17,7 @@ export default function DashboardLayout({ children }) {
     { name: 'Analytics', href: '/analytics', icon: TrendingUp },
   ];
 
-  const isActive = (href) => {
+  const isActive = (href: string) => {
     return pathname === href || pathname.startsWith(href + '/');
   };
 

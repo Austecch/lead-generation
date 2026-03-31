@@ -6,7 +6,7 @@ import DataTable from '@/components/DataTable';
 import { Plus, Filter } from 'lucide-react';
 
 export default function LeadsPage() {
-  const statsData = [
+  const statsData: Array<{ label: string; value: number; trend: { direction: 'up' | 'down'; percentage: number } }> = [
     { label: 'Total Leads', value: 2847, trend: { direction: 'up', percentage: 12 } },
     { label: 'Hot Leads', value: 487, trend: { direction: 'up', percentage: 8 } },
     { label: 'Warm Leads', value: 1203, trend: { direction: 'up', percentage: 5 } },
@@ -30,13 +30,13 @@ export default function LeadsPage() {
       key: 'score',
       label: 'Score',
       sortable: true,
-      render: (value) => <span className="font-semibold text-[#06d6a0]">{value}</span>
+      render: (value: number) => <span className="font-semibold text-[#06d6a0]">{value}</span>
     },
     {
       key: 'status',
       label: 'Status',
       sortable: true,
-      render: (value) => <span className={`badge badge-${value.toLowerCase()}`}>{value}</span>
+      render: (value: string) => <span className={`badge badge-${value.toLowerCase()}`}>{value}</span>
     },
     { key: 'source', label: 'Source', sortable: true },
     { key: 'lastContact', label: 'Last Contact', sortable: true },
@@ -72,7 +72,7 @@ export default function LeadsPage() {
 
         <DataTable
           title="Lead List"
-          columns={columns}
+          columns={columns as any}
           data={leadsTableData}
           searchable
           pageSize={10}

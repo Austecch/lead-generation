@@ -5,8 +5,13 @@ import { MetricCard, StatGrid } from '@/components/MetricCard';
 import DataTable from '@/components/DataTable';
 import { Plus } from 'lucide-react';
 
+interface Trend {
+  direction: 'up' | 'down';
+  percentage: number;
+}
+
 export default function OutreachPage() {
-  const statsData = [
+  const statsData: Array<{ label: string; value: number | string; trend: Trend }> = [
     { label: 'Sent This Month', value: 5230, trend: { direction: 'up', percentage: 15 } },
     { label: 'Scheduled', value: 247, trend: { direction: 'up', percentage: 8 } },
     { label: 'Open Rate', value: '42%', trend: { direction: 'up', percentage: 5 } },
@@ -75,13 +80,13 @@ export default function OutreachPage() {
     },
   ];
 
-  const renderBooleanIndicator = (value) => {
+  const renderBooleanIndicator = (value: boolean | null) => {
     if (value === true) return <span className="text-[#06d6a0] font-semibold">✓ Yes</span>;
     if (value === false) return <span className="text-[#ef4444] font-semibold">✗ No</span>;
     return <span className="text-gray-500">-</span>;
   };
 
-  const columns = [
+  const columns: Array<{ key: string; label: string; sortable?: boolean; render?: (value: any) => React.ReactElement }> = [
     { key: 'lead', label: 'Lead', sortable: true },
     { key: 'channel', label: 'Channel', sortable: true },
     { key: 'subject', label: 'Subject', sortable: true },
@@ -89,7 +94,7 @@ export default function OutreachPage() {
       key: 'status',
       label: 'Status',
       sortable: true,
-      render: (value) => <span className={`badge badge-${value}`}>{value}</span>
+      render: (value: string) => <span className={`badge badge-${value}`}>{value}</span>
     },
     { key: 'sentDate', label: 'Sent Date', sortable: true },
     {
@@ -128,7 +133,7 @@ export default function OutreachPage() {
 
         <DataTable
           title="Message History"
-          columns={columns}
+          columns={columns as any}
           data={outreachData}
           searchable
           pageSize={10}

@@ -4,7 +4,7 @@ import DashboardLayout from '@/components/DashboardLayout';
 import { MetricCard, StatGrid } from '@/components/MetricCard';
 
 export default function AnalyticsPage() {
-  const metricsData = [
+  const metricsData: Array<{ label: string; value: string; trend: { direction: 'up' | 'down'; percentage: number } }> = [
     { label: 'Total Revenue', value: '$45,230', trend: { direction: 'up', percentage: 28 } },
     { label: 'Cost Per Lead', value: '$12.50', trend: { direction: 'up', percentage: 5 } },
     { label: 'ROI', value: '342%', trend: { direction: 'up', percentage: 12 } },

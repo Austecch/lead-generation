@@ -6,7 +6,7 @@ import DataTable from '@/components/DataTable';
 import { Plus } from 'lucide-react';
 
 export default function CampaignsPage() {
-  const statsData = [
+  const statsData: Array<{ label: string; value: number; trend: { direction: 'up' | 'down'; percentage: number } }> = [
     { label: 'Active Campaigns', value: 12, trend: { direction: 'up', percentage: 3 } },
     { label: 'Total Leads', value: 2847, trend: { direction: 'up', percentage: 12 } },
     { label: 'Messages Sent', value: 5230, trend: { direction: 'up', percentage: 15 } },
@@ -66,13 +66,14 @@ export default function CampaignsPage() {
     },
   ];
 
-  const columns = [
+  const columns: Array<{ key: string; label: string; sortable?: boolean; render?: (value: any) => React.ReactElement }> = [
+    { key: 'id', label: 'ID', sortable: true },
     { key: 'name', label: 'Campaign Name', sortable: true },
     {
       key: 'status',
       label: 'Status',
       sortable: true,
-      render: (value) => <span className={`badge badge-${value}`}>{value}</span>
+      render: (value: string) => <span className={`badge badge-${value}`}>{value}</span>
     },
     { key: 'leads', label: 'Leads', sortable: true },
     { key: 'contacted', label: 'Contacted', sortable: true },
@@ -81,12 +82,12 @@ export default function CampaignsPage() {
       key: 'responseRate',
       label: 'Response Rate',
       sortable: true,
-      render: (value) => <span className="font-semibold">{value}%</span>
+      render: (value: number) => <span className="font-semibold">{value}%</span>
     },
     {
       key: 'progress',
       label: 'Progress',
-      render: (value) => (
+      render: (value: number) => (
         <div className="w-20 bg-[#1a202c] rounded-full h-2 overflow-hidden">
           <div className="bg-[#06d6a0] h-full" style={{ width: `${value}%` }} />
         </div>
@@ -118,7 +119,7 @@ export default function CampaignsPage() {
 
         <DataTable
           title="Campaign List"
-          columns={columns}
+          columns={columns as any}
           data={campaignsData}
           searchable
           pageSize={10}
